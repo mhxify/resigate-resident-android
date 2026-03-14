@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,7 +37,7 @@ fun PagerIndicator(
                     .size(if (index == currentPage) 10.dp else 8.dp)
                     .clip(CircleShape)
                     .background(
-                        if (index == currentPage) MainColor else MainColor.copy(alpha = 0.8f)
+                        if (index == currentPage) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.primary.copy(alpha = 0.8f)
                     )
             )
         }

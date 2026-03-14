@@ -2,42 +2,61 @@ package com.secure.resident.ui.theme
 
 import android.app.Activity
 import android.os.Build
+import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 
-private val DarkColorScheme = darkColorScheme(
-    primary = Purple80,
-    secondary = PurpleGrey80,
-    tertiary = Pink80
+private val LightColorScheme = lightColorScheme(
+    primary = MainBlueLight,
+    onPrimary = White,
+
+    secondary = SecondaryBlueLight,
+    onSecondary = White,
+
+    tertiary = SuccessGreenLight,
+    onTertiary = White,
+
+    background = BackgroundLight,
+    onBackground = TextPrimaryLight,
+
+    surface = SurfaceLight,
+    onSurface = TextPrimaryLight,
+
+    outline = BorderLight
 )
 
-private val LightColorScheme = lightColorScheme(
-    primary = Purple40,
-    secondary = PurpleGrey40,
-    tertiary = Pink40
+private val DarkColorScheme = darkColorScheme(
+    primary = MainBlueDark,
+    onPrimary = Black,
 
-    /* Other default colors to override
-    background = Color(0xFFFFFBFE),
-    surface = Color(0xFFFFFBFE),
-    onPrimary = Color.White,
-    onSecondary = Color.White,
-    onTertiary = Color.White,
-    onBackground = Color(0xFF1C1B1F),
-    onSurface = Color(0xFF1C1B1F),
-    */
+    secondary = SecondaryBlueDark,
+    onSecondary = Black,
+
+    tertiary = SuccessGreenDark,
+    onTertiary = Black,
+
+    background = BackgroundDark,
+    onBackground = TextPrimaryDark,
+
+    surface = SurfaceDark,
+    onSurface = TextPrimaryDark,
+
+    outline = BorderDark
 )
 
 @Composable
 fun Secure_gated_residentTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    // Dynamic color is available on Android 12+
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit
 ) {
     val colorScheme = when {
@@ -50,9 +69,15 @@ fun Secure_gated_residentTheme(
         else -> LightColorScheme
     }
 
-    MaterialTheme(
-        colorScheme = colorScheme,
-        typography = Typography,
-        content = content
-    )
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+    ) {
+        MaterialTheme(
+            colorScheme = colorScheme,
+            typography = Typography,
+            content = content ,
+        )
+    }
 }

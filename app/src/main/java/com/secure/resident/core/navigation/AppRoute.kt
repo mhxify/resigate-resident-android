@@ -7,4 +7,6 @@ object AppRoute {
     const val ONBOARDING = "onBoarding"
 
     const val AUTH = "auth"
+
+    const val MAIN = "main"
 }

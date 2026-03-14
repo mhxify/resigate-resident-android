@@ -6,6 +6,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.text.*
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.Modifier
@@ -19,15 +20,13 @@ import androidx.compose.ui.text.input.*
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
-import com.secure.resident.ui.theme.MainColor
-
 @Composable
 fun OtpInputField(
     otp: MutableState<String>,
     count: Int = 4,
     otpBoxModifier: Modifier = Modifier,
     otpTextType: KeyboardType = KeyboardType.Number,
-    textColor: Color = Color.Black,
+    textColor: Color = MaterialTheme.colorScheme.primary,
 ) {
     CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Ltr){
         val otpFieldsValues = remember {
@@ -140,7 +139,7 @@ private fun OtpBox(
     modifier: Modifier,
     otpValue: OtpField,
     textType: KeyboardType = KeyboardType.Number,
-    textColor: Color = Color.Black,
+    textColor: Color = MaterialTheme.colorScheme.primary,
     isLastItem: Boolean,
     onValueChange: (String) -> Unit,
     onFocusSet: (FocusRequester) -> Unit,
@@ -154,7 +153,11 @@ private fun OtpBox(
         modifier = modifier
             .clip(CircleShape)
             .background(Color.White, CircleShape)
-            .border(1.dp, MainColor, CircleShape),
+            .border(
+                1.dp,
+                MaterialTheme.colorScheme.primary,
+                CircleShape
+            ),
         contentAlignment = Alignment.Center,
     ) {
         BasicTextField(

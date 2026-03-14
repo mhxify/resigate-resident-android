@@ -1,5 +1,6 @@
 package com.secure.resident.core.presentation.component
 
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -15,8 +16,8 @@ import com.secure.resident.ui.theme.MainColor
 fun PrimaryText(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = MainColor,
-    needBold : Boolean = false ,
+    color: Color = MaterialTheme.colorScheme.primary ,
+    needBold : Boolean = false,
     textAlign: TextAlign = TextAlign.Start
 ) {
     Text(
@@ -33,7 +34,7 @@ fun PrimaryText(
 fun SecondaryText(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = MainColor,
+    color: Color = MaterialTheme.colorScheme.primary ,
     textAlign: TextAlign = TextAlign.Start
 ) {
     Text(
@@ -51,7 +52,7 @@ fun SecondaryText(
 fun CustomText(
     text: String,
     modifier: Modifier = Modifier,
-    color: Color = Color.Black,
+    color: Color = MaterialTheme.colorScheme.primary ,
     fontSize: TextUnit = 16.sp,
     fontWeight: FontWeight = FontWeight.Normal,
     textAlign: TextAlign = TextAlign.Start,

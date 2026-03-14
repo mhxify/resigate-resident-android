@@ -7,6 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import com.secure.resident.auth.navigation.authFlow
 import com.secure.resident.auth.presentation.view.forgot.navigation.forgotFlow
 import com.secure.resident.landing.presentation.view.LandingView
+import com.secure.resident.main.navigation.mainGraph
 import com.secure.resident.onboarding.presentation.view.OnBoardingView
 
 
@@ -34,5 +35,7 @@ fun AppNavigation() {
         authFlow(navController)
 
         forgotFlow(navController)
+
+        mainGraph(navController)
     }
 }
