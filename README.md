@@ -1,6 +1,6 @@
-# Secure Resident
+# ResiGate Resident
 
-Secure Resident is an Android application built with **Kotlin** and **Jetpack Compose**, following **Clean Architecture** principles with a **feature-based package structure**.
+ResiGate Resident is an Android application built with **Kotlin** and **Jetpack Compose**, following **Clean Architecture** principles with a **feature-based package structure**.
 
 The goal of this structure is to keep the codebase clean, scalable, maintainable, and easy to understand as the application grows.
 
