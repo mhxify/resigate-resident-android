@@ -1,5 +1,6 @@
 package com.secure.resident.auth.presentation.view.login
 
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -15,6 +16,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -34,6 +36,8 @@ fun LoginView(
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+
+    val context = LocalContext.current
 
     Column(
         verticalArrangement = Arrangement.spacedBy(16.dp),
@@ -73,6 +77,23 @@ fun LoginView(
         )
         AppButton(
             onClick = {
+                when {
+                    email.isBlank() && password.isBlank() -> {
+                        Toast.makeText(context , "Please enter your information" , Toast.LENGTH_LONG).show()
+                        return@AppButton
+                    }
+
+                    password.isBlank() -> {
+                        Toast.makeText(context , "Please enter your password" , Toast.LENGTH_LONG).show()
+                        return@AppButton
+                    }
+
+                    email.isBlank() -> {
+                        Toast.makeText(context , "Please enter your email" , Toast.LENGTH_LONG).show()
+                        return@AppButton
+                    }
+                }
+
                 AuthAction.navigationToMainFlow(navController)
             }
         )
