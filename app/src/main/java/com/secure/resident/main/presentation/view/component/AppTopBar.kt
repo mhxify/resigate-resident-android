@@ -25,7 +25,8 @@ import com.secure.resident.ui.theme.MainColor
 
 @Composable
 fun AppTopBar(
-    navController: NavController
+    navController: NavController ,
+    onMenuClick: () -> Unit
 ) {
     Row(
         modifier = Modifier
@@ -41,7 +42,7 @@ fun AppTopBar(
             tint = MaterialTheme.colorScheme.primary ,
             modifier = Modifier
                 .clickable {
-
+                    onMenuClick()
                 }
         )
 
