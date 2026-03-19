@@ -1,4 +1,4 @@
-package com.secure.resident.core.di.application
+package com.secure.resident
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
