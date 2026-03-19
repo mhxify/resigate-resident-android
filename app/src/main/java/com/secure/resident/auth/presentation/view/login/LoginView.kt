@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.secure.resident.R
+import com.secure.resident.auth.data.local.AuthPrefs
 import com.secure.resident.auth.navigation.AuthAction
 import com.secure.resident.auth.presentation.viewmodel.getMe.GetMeViewModel
 import com.secure.resident.auth.presentation.viewmodel.login.LoginViewModel
@@ -44,6 +45,7 @@ fun LoginView(
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var token by remember { mutableStateOf("") }
 
     val context = LocalContext.current
     val loginState by loginViewModel.loginState.collectAsState()
@@ -56,7 +58,7 @@ fun LoginView(
             is ResultState.Idle -> {}
 
             is ResultState.Success -> {
-                println(state.data)
+                token = state.data.token
                 getMeViewModel.getMe(state.data.token)
                 loginViewModel.resetLoginState()
             }
@@ -81,6 +83,15 @@ fun LoginView(
 
             is ResultState.Success -> {
                 Toast.makeText(context, "Login successful", Toast.LENGTH_LONG).show()
+                AuthPrefs.saveLoginData(
+                    context ,
+                    token = token ,
+                    userId = state.data.userId ?:"",
+                    email = state.data.email ?:"",
+                    fullName = state.data.fullname ?:"" ,
+                    imageUrl = state.data.imageUrl ?:"",
+                    role = state.data.role ?:""
+                )
                 println(state.data)
                 AuthAction.navigationToMainFlow(navController)
                 getMeViewModel.resetGetMeState()
