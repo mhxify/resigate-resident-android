@@ -14,8 +14,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.secure.resident.auth.data.local.AuthPrefs
+import com.secure.resident.auth.navigation.AuthRoute
 import com.secure.resident.main.presentation.view.component.AppBottomBar
 import com.secure.resident.main.presentation.view.component.AppDrawerContent
 import com.secure.resident.main.presentation.view.component.AppTopBar
@@ -26,6 +29,7 @@ fun MainView(
     navController: NavController
 ) {
     var selectedTab by remember { mutableIntStateOf(0) }
+    val context = LocalContext.current
 
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
@@ -39,7 +43,13 @@ fun MainView(
                 selectedRoute = selectedRoute,
                 onClick = { item ->
                     scope.launch {
-                        drawerState.close()
+                        when(item.route) {
+                            "logout" -> {
+                                AuthPrefs.logout(context)
+                                drawerState.close()
+                                navController.navigate(AuthRoute.LOGIN)
+                            }
+                        }
                     }
                 }
             )
