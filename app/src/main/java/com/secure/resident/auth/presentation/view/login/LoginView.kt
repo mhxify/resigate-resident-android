@@ -28,6 +28,7 @@ import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.secure.resident.R
 import com.secure.resident.auth.navigation.AuthAction
+import com.secure.resident.auth.presentation.viewmodel.getMe.GetMeViewModel
 import com.secure.resident.auth.presentation.viewmodel.login.LoginViewModel
 import com.secure.resident.core.presentation.component.AppButton
 import com.secure.resident.core.presentation.component.MainOutlinedTextField
@@ -37,7 +38,8 @@ import com.secure.resident.core.presentation.state.ResultState
 @Composable
 fun LoginView(
     navController: NavController ,
-    loginViewModel : LoginViewModel = hiltViewModel()
+    loginViewModel : LoginViewModel = hiltViewModel() ,
+    getMeViewModel: GetMeViewModel = hiltViewModel()
 ) {
 
     var email by remember { mutableStateOf("") }
@@ -45,17 +47,17 @@ fun LoginView(
 
     val context = LocalContext.current
     val loginState by loginViewModel.loginState.collectAsState()
+    val getMeState by getMeViewModel.getMeState.collectAsState()
 
-    val isLoading = loginState is ResultState.Loading
+    val isLoading = getMeState is ResultState.Loading
 
     LaunchedEffect(loginState) {
         when(val state = loginState) {
             is ResultState.Idle -> {}
 
             is ResultState.Success -> {
-                Toast.makeText(context, "Login successful", Toast.LENGTH_LONG).show()
                 println(state.data)
-                //AuthAction.navigationToMainFlow(navController)
+                getMeViewModel.getMe(state.data.token)
                 loginViewModel.resetLoginState()
             }
 
@@ -67,6 +69,31 @@ fun LoginView(
                     Toast.LENGTH_LONG
                 ).show()
                 loginViewModel.resetLoginState()
+            }
+
+            else -> null
+        }
+    }
+
+    LaunchedEffect(getMeState) {
+        when(val state = getMeState) {
+            is ResultState.Idle -> {}
+
+            is ResultState.Success -> {
+                Toast.makeText(context, "Login successful", Toast.LENGTH_LONG).show()
+                println(state.data)
+                AuthAction.navigationToMainFlow(navController)
+                getMeViewModel.resetGetMeState()
+            }
+
+            is ResultState.Error -> {
+                val errorMessage = state.message
+                Toast.makeText(
+                    context,
+                    errorMessage,
+                    Toast.LENGTH_LONG
+                ).show()
+                getMeViewModel.resetGetMeState()
             }
 
             else -> null
