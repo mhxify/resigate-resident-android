@@ -13,4 +13,18 @@ interface AuthRepository {
     suspend fun getMe(
         token : String
     ) : Result<User>
+
+    suspend fun sendOtp(
+        email : String
+    ) : Result<Unit>
+
+    suspend fun verifyOtp(
+        email: String ,
+        otp : String
+    ) : Result<Unit>
+
+    suspend fun resetPassword(
+        email: String ,
+        password : String
+    ) : Result<Unit>
 }
