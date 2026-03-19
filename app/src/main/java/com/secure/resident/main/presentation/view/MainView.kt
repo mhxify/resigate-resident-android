@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.secure.resident.auth.data.local.AuthPrefs
 import com.secure.resident.auth.navigation.AuthRoute
+import com.secure.resident.core.presentation.component.NavBar
 import com.secure.resident.main.presentation.view.component.AppBottomBar
 import com.secure.resident.main.presentation.view.component.AppDrawerContent
 import com.secure.resident.main.presentation.view.component.AppTopBar
@@ -67,13 +68,22 @@ fun MainView(
                 )
             } ,
             bottomBar = {
-                AppBottomBar(
-                    selectedIndex = selectedTab ,
-                    onTabSelected = { selectedTab = it } ,
-                    addClick = {
+                NavBar(
+                    currentRoute = selectedTab ,
+                    onItemClick = { item ->
+                        selectedTab = item.route
+                    } ,
+                    onAddClick = {
 
                     }
                 )
+//                AppBottomBar(
+//                    selectedIndex = selectedTab ,
+//                    onTabSelected = { selectedTab = it } ,
+//                    addClick = {
+//
+//                    }
+//                )
             }
         ) { paddingValues ->
             Column(

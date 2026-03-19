@@ -24,32 +24,32 @@ import androidx.compose.ui.unit.sp
 
 
 sealed class NavBarItem(
-    val route: String,
+    val route: Int,
     val label: String,
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector
 ) {
     object Home : NavBarItem(
-        route = "home",
+        route = 0,
         label = "Home",
         selectedIcon = Icons.Filled.Home,
         unselectedIcon = Icons.Outlined.Home
     )
     object Card : NavBarItem(
-        route = "card",
+        route = 1 ,
         label = "Card",
         selectedIcon = Icons.Filled.CreditCard,
         unselectedIcon = Icons.Outlined.CreditCard
     )
     object Chat : NavBarItem(
-        route = "chat",
-        label = "chat",
+        route = 2 ,
+        label = "Chat",
         selectedIcon = Icons.Filled.Chat,
         unselectedIcon = Icons.Outlined.Chat
     )
     object Profile : NavBarItem(
-        route = "profile",
-        label = "profile",
+        route = 3 ,
+        label = "Profile",
         selectedIcon = Icons.Filled.Person,
         unselectedIcon = Icons.Outlined.Person
     )
@@ -57,7 +57,7 @@ sealed class NavBarItem(
 
 @Composable
 fun NavBar(
-    currentRoute: String,
+    currentRoute: Int,
     onItemClick: (NavBarItem) -> Unit,
     onAddClick: () -> Unit,
     modifier: Modifier = Modifier
@@ -137,7 +137,7 @@ fun NavBar(
 @Composable
 fun NavBarPreview() {
     NavBar(
-        currentRoute = "home",
+        currentRoute = 0,
         onItemClick = {},
         onAddClick = {}
     )
