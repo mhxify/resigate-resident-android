@@ -30,4 +30,31 @@ class AuthRepositoryImpl @Inject constructor(
             Result.failure(e)
         }
     }
+
+    override suspend fun sendOtp(email: String): Result<Unit> {
+        return try {
+            val response = remoteDataSource.sendOtp(email)
+            Result.success(response)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun verifyOtp(email: String, otp: String): Result<Unit> {
+        return try {
+            val response = remoteDataSource.verifyOtp(email , otp)
+            Result.success(response)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun resetPassword(email: String, password: String): Result<Unit> {
+        return try {
+            val response = remoteDataSource.resetPassword(email , password)
+            Result.success(response)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 }
