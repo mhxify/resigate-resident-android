@@ -1,4 +1,4 @@
-package com.secure.resident.core.di.network
+package com.secure.resident.core.di
 
 import dagger.Module
 import dagger.Provides
