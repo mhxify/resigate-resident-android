@@ -16,11 +16,15 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun AppButton(
     title : String ="Login",
+    enabled : Boolean = true ,
     onClick : () -> Unit ={},
     modifier: Modifier = Modifier
 ) {
+
+    val buttonDisplayedText = if (enabled) title else "Loading..."
     Button(
         onClick = onClick,
+        enabled = enabled,
         modifier = modifier
             .fillMaxWidth()
             .height(50.dp) ,
@@ -30,6 +34,8 @@ fun AppButton(
         ),
         shape = RoundedCornerShape(12.dp)
     ) {
-        Text(text = title)
+        Text(
+            text = buttonDisplayedText
+        )
     }
 }
