@@ -2,6 +2,7 @@ package com.secure.resident.auth.data.repository
 
 import com.secure.resident.auth.data.model.login.response.LoginDtoResponse
 import com.secure.resident.auth.data.remote.AuthRemoteDataSource
+import com.secure.resident.auth.domain.model.User
 import com.secure.resident.auth.domain.repository.AuthRepository
 import javax.inject.Inject
 
@@ -15,6 +16,15 @@ class AuthRepositoryImpl @Inject constructor(
                 email = email,
                 password = password
             )
+            Result.success(response)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun getMe(token: String): Result<User> {
+        return try {
+            val response = remoteDataSource.getMe(token)
             Result.success(response)
         } catch (e: Exception) {
             Result.failure(e)
