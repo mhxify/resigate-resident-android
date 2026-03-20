@@ -23,6 +23,7 @@ import com.secure.resident.core.presentation.component.NavBar
 import com.secure.resident.main.presentation.view.component.AppBottomBar
 import com.secure.resident.main.presentation.view.component.AppDrawerContent
 import com.secure.resident.main.presentation.view.component.AppTopBar
+import com.secure.resident.main.presentation.view.section.cart.CardScreen
 import kotlinx.coroutines.launch
 
 @Composable
@@ -97,7 +98,7 @@ fun MainView(
                     }
 
                     1 -> {
-
+                        CardScreen()
                     }
 
                     2 -> {
