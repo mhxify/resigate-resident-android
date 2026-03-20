@@ -71,4 +71,7 @@ dependencies {
     implementation(libs.hilt.android)
     ksp(libs.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
+
+    //QR code generator dependency
+    implementation("com.google.zxing:core:3.5.3")
 }
