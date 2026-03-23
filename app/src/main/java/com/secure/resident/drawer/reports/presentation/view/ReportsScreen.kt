@@ -1,4 +1,4 @@
-package com.secure.resident.drawer.reports.presentation
+package com.secure.resident.drawer.reports.presentation.view
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
