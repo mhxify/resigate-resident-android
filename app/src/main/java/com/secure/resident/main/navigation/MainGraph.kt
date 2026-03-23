@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.secure.resident.core.navigation.AppRoute
 import com.secure.resident.main.presentation.view.MainView
+import com.secure.resident.main.presentation.view.section.chat.GroupMessageScreen
 
 fun NavGraphBuilder.mainGraph(navController: NavController) {
     navigation(
@@ -14,6 +15,10 @@ fun NavGraphBuilder.mainGraph(navController: NavController) {
     ) {
         composable(MainRoute.MAIN) {
             MainView(navController)
+        }
+
+        composable(MainRoute.GROUP_CHAT) {
+            GroupMessageScreen(navController)
         }
     }
 }
