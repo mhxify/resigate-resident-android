@@ -74,4 +74,7 @@ dependencies {
 
     //QR code generator dependency
     implementation("com.google.zxing:core:3.5.3")
+
+    // okhttp dependency for websocket
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 }
