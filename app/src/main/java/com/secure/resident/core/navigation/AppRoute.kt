@@ -9,4 +9,6 @@ object AppRoute {
     const val AUTH = "auth"
 
     const val MAIN = "main"
+
+    const val REPORTS = "reports"
 }
