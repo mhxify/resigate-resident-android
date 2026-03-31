@@ -5,6 +5,7 @@ import com.secure.resident.main.data.model.message.LiveMessageResponse
 import com.secure.resident.main.data.model.message.SendMessageRequest
 import com.secure.resident.main.domain.model.group.GroupMessage
 import com.secure.resident.main.domain.model.message.Message
+import com.secure.resident.main.domain.model.post.Post
 import io.ktor.client.HttpClient
 import io.ktor.client.call.body
 import io.ktor.client.request.bearerAuth
@@ -54,6 +55,30 @@ class MainRemoteDataSource @Inject constructor(
             bearerAuth(token)
             contentType(ContentType.Application.Json)
             setBody(request)
+        }
+
+        return response.body()
+    }
+
+
+    suspend fun getUserPost(
+        token: String ,
+        userId : String
+    ) : List<Post> {
+        val response = httpClient.get("${baseUrl}posts/user/$userId") {
+            bearerAuth(token)
+            contentType(ContentType.Application.Json)
+        }
+
+        return response.body()
+    }
+
+    suspend fun getAllPost(
+        token: String
+    ) : List<Post> {
+        val response = httpClient.get("${baseUrl}posts/all") {
+            bearerAuth(token)
+            contentType(ContentType.Application.Json)
         }
 
         return response.body()

@@ -10,5 +10,4 @@ object AppRoute {
 
     const val MAIN = "main"
 
-    const val REPORTS = "reports"
 }

@@ -4,9 +4,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class Report(
-    val id: String,
-    val title: String,
-    val description: String,
-    val date: String,
-    val status: String
+    val content : String ,
+    val sentAt : String ,
+    val imageUrl : String ? ,
+    val userId : String ,
+    val repliedAt : String ? ,
+    val adminReply : String ?
 )

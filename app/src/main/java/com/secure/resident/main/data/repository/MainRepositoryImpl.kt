@@ -5,6 +5,7 @@ import com.secure.resident.main.data.model.message.SendMessageRequest
 import com.secure.resident.main.data.remote.MainRemoteDataSource
 import com.secure.resident.main.domain.model.group.GroupMessage
 import com.secure.resident.main.domain.model.message.Message
+import com.secure.resident.main.domain.model.post.Post
 import com.secure.resident.main.domain.repository.MainRepository
 import javax.inject.Inject
 
@@ -44,6 +45,29 @@ class MainRepositoryImpl @Inject constructor(
             val response = mainRemoteDataSource.sendMessage(
                 token = token ,
                 request = request
+            )
+            Result.success(response)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun getAllPost(token: String): Result<List<Post>> {
+        return try {
+            val response = mainRemoteDataSource.getAllPost(
+                token = token
+            )
+            Result.success(response)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun getUserPost(token: String, userId: String): Result<List<Post>> {
+        return try {
+            val response = mainRemoteDataSource.getUserPost(
+                token = token ,
+                userId = userId
             )
             Result.success(response)
         } catch (e: Exception) {

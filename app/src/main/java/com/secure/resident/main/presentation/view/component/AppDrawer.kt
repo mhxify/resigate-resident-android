@@ -34,8 +34,12 @@ data class DrawerMenuItem(
     val icon: ImageVector
 )
 
+object DrawerItemRoutes {
+    const val REPORTS = "reports"
+}
+
 val drawerItems = listOf(
-    DrawerMenuItem("Reports", "reports", Icons.Default.Description),
+    DrawerMenuItem("Reports", DrawerItemRoutes.REPORTS, Icons.Default.Description),
     DrawerMenuItem("Incident", "incident", Icons.Default.Warning),
     DrawerMenuItem("Reserve Facilities", "reserve_facilities", Icons.Default.Event),
     DrawerMenuItem("Request Guest", "request_guest", Icons.Default.PersonAdd),

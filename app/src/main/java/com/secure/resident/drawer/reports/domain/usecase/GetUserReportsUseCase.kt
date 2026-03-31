@@ -4,9 +4,9 @@ import com.secure.resident.drawer.reports.domain.model.Report
 import com.secure.resident.drawer.reports.domain.repository.ReportsRepository
 import javax.inject.Inject
 
-class GetReportsUseCase @Inject constructor(
+class GetUserReportsUseCase @Inject constructor(
     private val repository: ReportsRepository
 ) {
-    suspend operator fun invoke(token: String): Result<List<Report>> =
-        repository.getReports(token)
+    suspend operator fun invoke(token: String , userId : String): Result<List<Report>> =
+        repository.getUserReports(token , userId)
 }

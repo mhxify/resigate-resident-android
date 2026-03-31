@@ -13,8 +13,8 @@ import javax.inject.Inject
 class ReportsRemoteDataSource @Inject constructor(
     private val httpClient: HttpClient
 ) {
-    suspend fun getReports(token: String): List<Report> {
-        val response = httpClient.get("${baseUrl}reports") {
+    suspend fun getUserReports(token: String , userId : String): List<Report> {
+        val response = httpClient.get("${baseUrl}reports/user/$userId") {
             bearerAuth(token)
             contentType(ContentType.Application.Json)
         }

@@ -10,9 +10,9 @@ class ReportsRepositoryImpl @Inject constructor(
     private val reportsRemoteDataSource: ReportsRemoteDataSource
 ) : ReportsRepository {
 
-    override suspend fun getReports(token: String): Result<List<Report>> {
+    override suspend fun getUserReports(token: String , userId : String): Result<List<Report>> {
         return try {
-            val response = reportsRemoteDataSource.getReports(token = token)
+            val response = reportsRemoteDataSource.getUserReports(token , userId)
             Result.success(response)
         } catch (e: Exception) {
             Result.failure(e)

@@ -20,11 +20,15 @@ import androidx.navigation.NavController
 import com.secure.resident.auth.data.local.AuthPrefs
 import com.secure.resident.auth.navigation.AuthRoute
 import com.secure.resident.core.presentation.component.NavBar
-import com.secure.resident.main.presentation.view.component.AppBottomBar
+import com.secure.resident.drawer.navigation.DrawerAction
+import com.secure.resident.main.presentation.view.component.AddDialogView
 import com.secure.resident.main.presentation.view.component.AppDrawerContent
 import com.secure.resident.main.presentation.view.component.AppTopBar
+import com.secure.resident.main.presentation.view.component.DrawerItemRoutes
 import com.secure.resident.main.presentation.view.section.cart.CardScreen
 import com.secure.resident.main.presentation.view.section.chat.ChatScreen
+import com.secure.resident.main.presentation.view.section.home.HomeScreen
+import com.secure.resident.main.presentation.view.section.profile.ProfileScreen
 import kotlinx.coroutines.launch
 
 @Composable
@@ -39,6 +43,8 @@ fun MainView(
 
     var selectedRoute by remember { mutableStateOf("") }
 
+    var isOpen by remember { mutableStateOf(false) }
+
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
@@ -47,6 +53,10 @@ fun MainView(
                 onClick = { item ->
                     scope.launch {
                         when(item.route) {
+                            DrawerItemRoutes.REPORTS -> {
+                                DrawerAction.navigateToReports(navController)
+                            }
+
                             "logout" -> {
                                 AuthPrefs.logout(context)
                                 drawerState.close()
@@ -76,7 +86,7 @@ fun MainView(
                         selectedTab = item.route
                     } ,
                     onAddClick = {
-
+                        isOpen = true
                     }
                 )
 //                AppBottomBar(
@@ -95,7 +105,7 @@ fun MainView(
             ) {
                 when(selectedTab) {
                     0 -> {
-
+                        HomeScreen(navController)
                     }
 
                     1 -> {
@@ -107,10 +117,21 @@ fun MainView(
                     }
 
                     3 -> {
-
+                        ProfileScreen(navController)
                     }
                 }
             }
         }
+    }
+
+    if (isOpen) {
+        AddDialogView(
+            onDismiss = {
+                isOpen = false
+            } ,
+            onItemClicked = {
+                isOpen = false
+            }
+        )
     }
 }
