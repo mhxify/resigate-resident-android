@@ -37,15 +37,19 @@ data class DrawerMenuItem(
 object DrawerItemRoutes {
     const val REPORTS = "reports"
     const val INCIDENT = "incident"
+    const val FACILITIES = "reserve_facilities"
+    const val REQUEST_GUEST = "request_guest"
+    const val ABOUT_US = "about_us"
+    const val LOGOUT = "logout"
 }
 
 val drawerItems = listOf(
     DrawerMenuItem("Reports", DrawerItemRoutes.REPORTS, Icons.Default.Description),
     DrawerMenuItem("Incident", DrawerItemRoutes.INCIDENT, Icons.Default.Warning),
-    DrawerMenuItem("Reserve Facilities", "reserve_facilities", Icons.Default.Event),
-    DrawerMenuItem("Request Guest", "request_guest", Icons.Default.PersonAdd),
-    DrawerMenuItem("About Us", "about_us", Icons.Default.Info),
-    DrawerMenuItem("Logout", "logout", Icons.Default.ExitToApp)
+    DrawerMenuItem("Reserve Facilities", DrawerItemRoutes.FACILITIES, Icons.Default.Event),
+    DrawerMenuItem("Request Guest", DrawerItemRoutes.REQUEST_GUEST, Icons.Default.PersonAdd),
+    DrawerMenuItem("About Us", DrawerItemRoutes.ABOUT_US, Icons.Default.Info),
+    DrawerMenuItem("Logout", DrawerItemRoutes.LOGOUT, Icons.Default.ExitToApp)
 )
 
 @Preview

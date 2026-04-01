@@ -10,4 +10,8 @@ object DrawerAction {
     fun navigationToIncident(navController: NavController) {
         navController.navigate(DrawerRoute.INCIDENCE)
     }
+
+    fun navigationToAboutUs(navController: NavController) {
+        navController.navigate(DrawerRoute.ABOUT_US)
+    }
 }

@@ -7,3 +7,11 @@ fun formatDate(date: String): String {
         date
     }
 }
+
+fun formatReservationDateTime(dateTime: String): String {
+    return try {
+        dateTime.replace("T", " ").take(16)
+    } catch (_: Exception) {
+        dateTime
+    }
+}

@@ -4,4 +4,6 @@ object DrawerRoute {
 
     const val REPORTS = "report_graph"
     const val INCIDENCE = "incidences_graph"
+
+    const val ABOUT_US = "about_us_screen"
 }
