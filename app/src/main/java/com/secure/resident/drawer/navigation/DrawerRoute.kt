@@ -6,4 +6,6 @@ object DrawerRoute {
     const val INCIDENCE = "incidences_graph"
 
     const val ABOUT_US = "about_us_screen"
+
+    const val RESERVE_FACILITIES = "reserve_facilities_screen"
 }

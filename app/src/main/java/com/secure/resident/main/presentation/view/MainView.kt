@@ -65,6 +65,10 @@ fun MainView(
                                 DrawerAction.navigationToAboutUs(navController)
                             }
 
+                            DrawerItemRoutes.FACILITIES -> {
+                                DrawerAction.navigationToReserveFacilities(navController)
+                            }
+
                             DrawerItemRoutes.LOGOUT  -> {
                                 AuthPrefs.logout(context)
                                 drawerState.close()

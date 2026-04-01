@@ -14,4 +14,8 @@ object DrawerAction {
     fun navigationToAboutUs(navController: NavController) {
         navController.navigate(DrawerRoute.ABOUT_US)
     }
+
+    fun navigationToReserveFacilities(navController: NavController) {
+        navController.navigate(DrawerRoute.RESERVE_FACILITIES)
+    }
 }
