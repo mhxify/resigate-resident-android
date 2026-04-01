@@ -8,4 +8,6 @@ object DrawerRoute {
     const val ABOUT_US = "about_us_screen"
 
     const val RESERVE_FACILITIES = "reserve_facilities_screen"
+
+    const val REQUEST_GUEST = "request_guest_screen"
 }

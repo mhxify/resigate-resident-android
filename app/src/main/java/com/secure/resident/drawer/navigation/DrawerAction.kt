@@ -18,4 +18,8 @@ object DrawerAction {
     fun navigationToReserveFacilities(navController: NavController) {
         navController.navigate(DrawerRoute.RESERVE_FACILITIES)
     }
+
+    fun navigationToRequestGuest(navController: NavController) {
+        navController.navigate(DrawerRoute.REQUEST_GUEST)
+    }
 }
