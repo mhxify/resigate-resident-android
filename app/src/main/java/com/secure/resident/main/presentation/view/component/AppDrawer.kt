@@ -36,11 +36,12 @@ data class DrawerMenuItem(
 
 object DrawerItemRoutes {
     const val REPORTS = "reports"
+    const val INCIDENT = "incident"
 }
 
 val drawerItems = listOf(
     DrawerMenuItem("Reports", DrawerItemRoutes.REPORTS, Icons.Default.Description),
-    DrawerMenuItem("Incident", "incident", Icons.Default.Warning),
+    DrawerMenuItem("Incident", DrawerItemRoutes.INCIDENT, Icons.Default.Warning),
     DrawerMenuItem("Reserve Facilities", "reserve_facilities", Icons.Default.Event),
     DrawerMenuItem("Request Guest", "request_guest", Icons.Default.PersonAdd),
     DrawerMenuItem("About Us", "about_us", Icons.Default.Info),

@@ -7,4 +7,7 @@ object DrawerAction {
         navController.navigate(DrawerRoute.REPORTS)
     }
 
+    fun navigationToIncident(navController: NavController) {
+        navController.navigate(DrawerRoute.INCIDENCE)
+    }
 }
