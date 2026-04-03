@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "887204220634",
+    "project_id": "gatedrealtiming",
+    "storage_bucket": "gatedrealtiming.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:887204220634:android:d23d6b17ec7fbb00f71fe3",
+        "android_client_info": {
+          "package_name": "com.secure.resident"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7lwwty2Wv61WtimzbWExlGpCcJF15i8w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

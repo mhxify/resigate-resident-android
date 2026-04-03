@@ -7,4 +7,6 @@ object MainRoute {
     const val GROUP_CHAT = "group_chat"
 
     const val DRAWER = "drawer_graph"
+
+    const val NOTIFICATION = "notification_screen"
 }

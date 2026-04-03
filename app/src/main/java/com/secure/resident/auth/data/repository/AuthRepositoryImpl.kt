@@ -1,6 +1,7 @@
 package com.secure.resident.auth.data.repository
 
 import com.secure.resident.auth.data.model.login.response.LoginDtoResponse
+import com.secure.resident.auth.data.model.updatefcm.UpdateFcm
 import com.secure.resident.auth.data.remote.AuthRemoteDataSource
 import com.secure.resident.auth.domain.model.User
 import com.secure.resident.auth.domain.repository.AuthRepository
@@ -52,6 +53,15 @@ class AuthRepositoryImpl @Inject constructor(
     override suspend fun resetPassword(email: String, password: String): Result<Unit> {
         return try {
             val response = remoteDataSource.resetPassword(email , password)
+            Result.success(response)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun updateFcm(request: UpdateFcm , token: String): Result<Unit> {
+        return try {
+            val response = remoteDataSource.updateFcm(request , token)
             Result.success(response)
         } catch (e: Exception) {
             Result.failure(e)

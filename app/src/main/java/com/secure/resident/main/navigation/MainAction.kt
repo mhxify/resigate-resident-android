@@ -7,4 +7,9 @@ object MainAction {
     fun navigationToGroupChat(navController: NavController) {
         navController.navigate(MainRoute.GROUP_CHAT)
     }
+
+    fun navigationToNotification(navController: NavController) {
+        navController.navigate(MainRoute.NOTIFICATION)
+    }
+
 }

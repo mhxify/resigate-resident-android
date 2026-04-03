@@ -26,11 +26,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.google.firebase.messaging.FirebaseMessaging
 import com.secure.resident.R
 import com.secure.resident.auth.data.local.AuthPrefs
 import com.secure.resident.auth.navigation.AuthAction
 import com.secure.resident.auth.presentation.viewmodel.getMe.GetMeViewModel
 import com.secure.resident.auth.presentation.viewmodel.login.LoginViewModel
+import com.secure.resident.auth.presentation.viewmodel.updatefcm.UpdateFcmViewModel
 import com.secure.resident.core.presentation.component.AppButton
 import com.secure.resident.core.presentation.component.MainOutlinedTextField
 import com.secure.resident.core.presentation.component.PrimaryText
@@ -40,7 +42,8 @@ import com.secure.resident.core.presentation.state.ResultState
 fun LoginView(
     navController: NavController ,
     loginViewModel : LoginViewModel = hiltViewModel() ,
-    getMeViewModel: GetMeViewModel = hiltViewModel()
+    getMeViewModel: GetMeViewModel = hiltViewModel() ,
+    updateFcmViewModel: UpdateFcmViewModel = hiltViewModel()
 ) {
 
     var email by remember { mutableStateOf("") }
@@ -50,6 +53,7 @@ fun LoginView(
     val context = LocalContext.current
     val loginState by loginViewModel.loginState.collectAsState()
     val getMeState by getMeViewModel.getMeState.collectAsState()
+    val updateFcmState by updateFcmViewModel.updateState.collectAsState()
 
     val isLoading = getMeState is ResultState.Loading
 
@@ -93,7 +97,16 @@ fun LoginView(
                     role = state.data.role ?:""
                 )
                 println(state.data)
-                AuthAction.navigationToMainFlow(navController)
+                FirebaseMessaging.getInstance().token
+                    .addOnSuccessListener { fcmToken ->
+                        if (!fcmToken.isNullOrBlank()) {
+                            updateFcmViewModel.updateFcm(
+                                fcmToken = fcmToken ,
+                                token = token
+                            )
+                        }
+                    }
+
                 getMeViewModel.resetGetMeState()
             }
 
@@ -107,6 +120,25 @@ fun LoginView(
                 getMeViewModel.resetGetMeState()
             }
 
+            else -> null
+        }
+    }
+
+    LaunchedEffect(updateFcmState) {
+        when(val state = updateFcmState) {
+            is ResultState.Success -> {
+                AuthAction.navigationToMainFlow(navController)
+                updateFcmViewModel.resetUpdateState()
+            }
+            is ResultState.Error -> {
+                val errorMessage = state.message
+                Toast.makeText(
+                    context,
+                    errorMessage,
+                    Toast.LENGTH_LONG
+                ).show()
+                updateFcmViewModel.resetUpdateState()
+            }
             else -> null
         }
     }

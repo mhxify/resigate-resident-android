@@ -21,6 +21,8 @@ import com.secure.resident.auth.data.local.AuthPrefs
 import com.secure.resident.auth.navigation.AuthRoute
 import com.secure.resident.core.presentation.component.NavBar
 import com.secure.resident.drawer.navigation.DrawerAction
+import com.secure.resident.main.navigation.MainAction
+import com.secure.resident.main.presentation.helper.AskNotificationPermission
 import com.secure.resident.main.presentation.view.component.AddDialogView
 import com.secure.resident.main.presentation.view.component.AppDrawerContent
 import com.secure.resident.main.presentation.view.component.AppTopBar
@@ -44,6 +46,8 @@ fun MainView(
     var selectedRoute by remember { mutableStateOf("") }
 
     var isOpen by remember { mutableStateOf(false) }
+
+    AskNotificationPermission()
 
     ModalNavigationDrawer(
         drawerState = drawerState,
@@ -87,11 +91,13 @@ fun MainView(
         Scaffold(
             topBar = {
                 AppTopBar(
-                    navController ,
                     onMenuClick = {
                         scope.launch {
                             drawerState.open()
                         }
+                    } ,
+                    onNotificationClicked = {
+                        MainAction.navigationToNotification(navController)
                     }
                 )
             } ,

@@ -8,6 +8,7 @@ import com.secure.resident.core.navigation.AppRoute
 import com.secure.resident.drawer.navigation.drawerGraph
 import com.secure.resident.main.presentation.view.MainView
 import com.secure.resident.main.presentation.view.section.chat.GroupMessageScreen
+import com.secure.resident.notification.presentation.view.NotificationScreen
 
 fun NavGraphBuilder.mainGraph(navController: NavController) {
     navigation(
@@ -23,5 +24,9 @@ fun NavGraphBuilder.mainGraph(navController: NavController) {
         }
 
         drawerGraph(navController)
+
+        composable(MainRoute.NOTIFICATION) {
+            NotificationScreen(navController)
+        }
     }
 }
