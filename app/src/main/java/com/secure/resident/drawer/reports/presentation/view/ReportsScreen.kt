@@ -3,6 +3,7 @@ package com.secure.resident.drawer.reports.presentation.view
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -20,6 +21,7 @@ import com.secure.resident.auth.data.local.AuthPrefs
 import com.secure.resident.core.presentation.component.BackTopBar
 import com.secure.resident.core.presentation.component.CircularIndicator
 import com.secure.resident.core.presentation.component.PrimaryText
+import com.secure.resident.core.presentation.helper.formatReservationDateTime
 import com.secure.resident.core.presentation.state.ResultState
 import com.secure.resident.drawer.reports.presentation.viewmodel.GetUserReportViewModel
 
@@ -120,8 +122,9 @@ private fun ReportItem(
 ) {
     Card(
         modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(18.dp),
         colors = CardDefaults.cardColors(
-            containerColor = MaterialTheme.colorScheme.surfaceVariant
+            containerColor = MaterialTheme.colorScheme.surface
         ),
         elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
     ) {
@@ -132,28 +135,28 @@ private fun ReportItem(
             Text(
                 text = content,
                 style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             Text(
-                text = "Sent at: $sendAt",
+                text = "Sent at: ${formatReservationDateTime(sendAt)}",
                 style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSurfaceVariant
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             if (!reply.isNullOrBlank()) {
                 Text(
                     text = "Admin reply: $reply",
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.secondary
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
 
             if (!repliedAt.isNullOrBlank()) {
                 Text(
-                    text = "Admin reply At : $repliedAt",
+                    text = "Admin reply At : ${formatReservationDateTime(repliedAt)}",
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.secondary
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
         }

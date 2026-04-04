@@ -18,6 +18,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Comment
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
@@ -39,6 +41,7 @@ import com.secure.resident.auth.data.local.AuthPrefs
 import com.secure.resident.core.data.remote.baseUrl
 import com.secure.resident.core.presentation.component.CircularIndicator
 import com.secure.resident.core.presentation.component.PrimaryText
+import com.secure.resident.core.presentation.helper.formatReservationDateTime
 import com.secure.resident.core.presentation.state.ResultState
 import com.secure.resident.main.presentation.viewmodel.home.getAllPost.GetAllPostViewModel
 
@@ -126,16 +129,19 @@ fun PostView(
     onCommentClick : () -> Unit = {} ,
     onProfileClicked: () -> Unit = {}
 ) {
-    Box(
-        modifier = Modifier
-            .clip(RoundedCornerShape(12.dp))
-            .background(MaterialTheme.colorScheme.primary)
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(18.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surface
+        ),
+        elevation = CardDefaults.cardElevation(defaultElevation = 3.dp)
     ) {
         Column(
             verticalArrangement = Arrangement.spacedBy(8.dp),
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(8.dp)
+                .padding(16.dp)
         ) {
             UserProfile(
                 profilePicUrl = profilePicUrl ,
@@ -146,13 +152,13 @@ fun PostView(
             if(!content.isNullOrBlank()) {
                 PrimaryText(
                     text = content ,
-                    color = MaterialTheme.colorScheme.onPrimary
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
 
             PrimaryText(
-                text = createdAt ,
-                color = MaterialTheme.colorScheme.onPrimary
+                text = formatReservationDateTime(createdAt),
+                color = MaterialTheme.colorScheme.onSurface
             )
 
             if(!postImage.isNullOrBlank()) {
@@ -167,7 +173,7 @@ fun PostView(
                         .border(
                             width = 1.dp ,
                             shape = RoundedCornerShape(12.dp) ,
-                            color = MaterialTheme.colorScheme.onPrimary
+                            color = MaterialTheme.colorScheme.onSurface
                         )
                 )
             }
@@ -205,14 +211,14 @@ fun UserProfile(
                 .border(
                     width = 1.dp ,
                     shape = CircleShape ,
-                    color = MaterialTheme.colorScheme.onPrimary
+                    color = MaterialTheme.colorScheme.onSurface
                 )
         )
 
         PrimaryText(
             text = userFullName ,
             needBold = true ,
-            color = MaterialTheme.colorScheme.onPrimary
+            color = MaterialTheme.colorScheme.onSurface
         )
 
     }
@@ -236,12 +242,12 @@ fun ReactionAndCommentRowView(
         Icon(
             imageVector = Icons.AutoMirrored.Filled.Comment,
             contentDescription = null ,
-            tint = MaterialTheme.colorScheme.onPrimary
+            tint = MaterialTheme.colorScheme.onSurface
         )
 
         PrimaryText(
             text = commentNumber.toString() ,
-            color = MaterialTheme.colorScheme.onPrimary
+            color = MaterialTheme.colorScheme.onSurface
         )
 
     }

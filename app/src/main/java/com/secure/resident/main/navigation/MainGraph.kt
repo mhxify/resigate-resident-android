@@ -9,6 +9,7 @@ import com.secure.resident.drawer.navigation.drawerGraph
 import com.secure.resident.main.presentation.view.MainView
 import com.secure.resident.main.presentation.view.section.chat.GroupMessageScreen
 import com.secure.resident.notification.presentation.view.NotificationScreen
+import com.secure.resident.report.presentation.view.SendReportScreen
 import com.secure.resident.reserveFacility.navigation.reserveFacility
 
 fun NavGraphBuilder.mainGraph(navController: NavController) {
@@ -31,5 +32,11 @@ fun NavGraphBuilder.mainGraph(navController: NavController) {
         }
 
         reserveFacility(navController)
+
+        composable(
+            MainRoute.SEND_REPORT
+        ) {
+            SendReportScreen(navController)
+        }
     }
 }

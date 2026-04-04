@@ -16,4 +16,8 @@ object MainAction {
         navController.navigate(MainRoute.RESERVE_FACILITY)
     }
 
+    fun navigationToSendReport(navController: NavController) {
+        navController.navigate(MainRoute.SEND_REPORT)
+    }
+
 }

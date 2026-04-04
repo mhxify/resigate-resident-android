@@ -11,4 +11,6 @@ object MainRoute {
     const val NOTIFICATION = "notification_screen"
 
     const val RESERVE_FACILITY = "reserve_facility_graph"
+
+    const val SEND_REPORT = "send_report_screen"
 }

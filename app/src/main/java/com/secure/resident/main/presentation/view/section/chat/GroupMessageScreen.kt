@@ -51,6 +51,7 @@ import com.secure.resident.auth.data.local.AuthPrefs
 import com.secure.resident.core.presentation.component.CircularIndicator
 import com.secure.resident.core.presentation.component.MainOutlinedTextField
 import com.secure.resident.core.presentation.component.PrimaryText
+import com.secure.resident.core.presentation.helper.formatReservationDateTime
 import com.secure.resident.core.presentation.state.ResultState
 import com.secure.resident.main.data.local.ChatPrefs
 import com.secure.resident.main.data.model.message.SendMessageRequest
@@ -339,7 +340,7 @@ private fun MessageView(
             Spacer(modifier = Modifier.height(6.dp))
 
             Text(
-                text = createdAt,
+                text = formatReservationDateTime(createdAt),
                 style = MaterialTheme.typography.labelSmall,
                 color = if (isSender) {
                     MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.7f)

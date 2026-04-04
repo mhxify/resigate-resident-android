@@ -154,9 +154,15 @@ fun MainView(
             } ,
             onItemClicked = { item ->
                 when(item.route) {
+
                     DialogRoute.RESERVE_FACILITIES -> {
                         MainAction.navigationToReserveFacilityGraph(navController)
                     }
+
+                    DialogRoute.SEND_REPORT -> {
+                        MainAction.navigationToSendReport(navController)
+                    }
+
                 }
                 isOpen = false
             }
