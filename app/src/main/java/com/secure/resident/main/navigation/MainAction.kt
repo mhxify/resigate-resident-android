@@ -12,4 +12,8 @@ object MainAction {
         navController.navigate(MainRoute.NOTIFICATION)
     }
 
+    fun navigationToReserveFacilityGraph(navController: NavController){
+        navController.navigate(MainRoute.RESERVE_FACILITY)
+    }
+
 }

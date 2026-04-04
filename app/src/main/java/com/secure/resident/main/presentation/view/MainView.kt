@@ -26,6 +26,7 @@ import com.secure.resident.main.presentation.helper.AskNotificationPermission
 import com.secure.resident.main.presentation.view.component.AddDialogView
 import com.secure.resident.main.presentation.view.component.AppDrawerContent
 import com.secure.resident.main.presentation.view.component.AppTopBar
+import com.secure.resident.main.presentation.view.component.DialogRoute
 import com.secure.resident.main.presentation.view.component.DrawerItemRoutes
 import com.secure.resident.main.presentation.view.section.cart.CardScreen
 import com.secure.resident.main.presentation.view.section.chat.ChatScreen
@@ -151,7 +152,12 @@ fun MainView(
             onDismiss = {
                 isOpen = false
             } ,
-            onItemClicked = {
+            onItemClicked = { item ->
+                when(item.route) {
+                    DialogRoute.RESERVE_FACILITIES -> {
+                        MainAction.navigationToReserveFacilityGraph(navController)
+                    }
+                }
                 isOpen = false
             }
         )

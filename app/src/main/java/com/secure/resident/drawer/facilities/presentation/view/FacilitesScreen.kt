@@ -1,5 +1,6 @@
 package com.secure.resident.drawer.facilities.presentation.view
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -51,7 +52,8 @@ fun FacilitiesScreen(
         Column(
             modifier = Modifier
                 .padding(innerPadding)
-                .padding(16.dp)
+                .padding(16.dp) ,
+            verticalArrangement = Arrangement.spacedBy(16.dp)
         ) {
             StatusToggleSwitcher(
                 statusList = statusList,

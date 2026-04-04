@@ -35,11 +35,15 @@ data class DialogItem(
     val icon : ImageVector
 )
 
+object DialogRoute {
+    const val RESERVE_FACILITIES = "reserve_facilities"
+}
+
 val dialogItems = listOf(
     DialogItem("Add Post", "add_post", Icons.Default.Event),
     DialogItem("Send Report", "send_report", Icons.Default.Description),
     DialogItem("Report Incident", "incident", Icons.Default.Warning),
-    DialogItem("Reserve Facilities", "reserve_facilities", Icons.Default.Event),
+    DialogItem("Reserve Facilities", DialogRoute.RESERVE_FACILITIES, Icons.Default.Event),
     DialogItem("Request Guest", "request_guest", Icons.Default.PersonAdd),
 )
 
@@ -49,7 +53,7 @@ val dialogItems = listOf(
 @Composable
 fun AddDialogView(
     onDismiss : () -> Unit = {},
-    onItemClicked : (String) -> Unit = {},
+    onItemClicked : (DialogItem) -> Unit = {},
     items : List<DialogItem> = dialogItems
 ) {
     Dialog(
@@ -86,7 +90,7 @@ fun AddDialogView(
                             .padding(8.dp)
                             .fillMaxWidth()
                             .clickable {
-                                onItemClicked(item.route)
+                                onItemClicked(item)
                             }
                     ) {
                         Icon(

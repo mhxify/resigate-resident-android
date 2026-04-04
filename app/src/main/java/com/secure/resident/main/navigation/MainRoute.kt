@@ -9,4 +9,6 @@ object MainRoute {
     const val DRAWER = "drawer_graph"
 
     const val NOTIFICATION = "notification_screen"
+
+    const val RESERVE_FACILITY = "reserve_facility_graph"
 }

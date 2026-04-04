@@ -54,7 +54,7 @@ fun ReservationItem(
                 Text(
                     text = formatDate(reservation.reservationDate),
                     style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.outline
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
 
