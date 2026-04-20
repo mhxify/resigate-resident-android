@@ -38,14 +38,17 @@ data class DialogItem(
 object DialogRoute {
     const val RESERVE_FACILITIES = "reserve_facilities"
     const val SEND_REPORT = "send_report"
+    const val ADD_POST = "add_post"
+    const val INCIDENT = "incident"
+    const val REQUEST_GUEST = "request_guest"
 }
 
 val dialogItems = listOf(
-    DialogItem("Add Post", "add_post", Icons.Default.Event),
+    DialogItem("Add Post", DialogRoute.ADD_POST, Icons.Default.Event),
     DialogItem("Send Report", DialogRoute.SEND_REPORT, Icons.Default.Description),
-    DialogItem("Report Incident", "incident", Icons.Default.Warning),
+    DialogItem("Report Incident", DialogRoute.INCIDENT, Icons.Default.Warning),
     DialogItem("Reserve Facilities", DialogRoute.RESERVE_FACILITIES, Icons.Default.Event),
-    DialogItem("Request Guest", "request_guest", Icons.Default.PersonAdd),
+    DialogItem("Request Guest",DialogRoute.REQUEST_GUEST , Icons.Default.PersonAdd),
 )
 
 

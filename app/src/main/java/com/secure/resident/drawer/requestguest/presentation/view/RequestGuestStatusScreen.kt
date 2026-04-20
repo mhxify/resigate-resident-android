@@ -28,7 +28,7 @@ object RequestGuestStatus {
 }
 
 @Composable
-fun RequestGuestScreen(
+fun RequestGuestStatusScreen(
     navController: NavController
 ) {
     val statusList = listOf(
@@ -54,7 +54,6 @@ fun RequestGuestScreen(
         Column(
             modifier = Modifier
                 .padding(innerPadding)
-                .padding(16.dp)
         ) {
             StatusToggleSwitcher(
                 statusList = statusList,

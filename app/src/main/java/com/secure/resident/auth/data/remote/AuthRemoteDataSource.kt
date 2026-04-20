@@ -143,4 +143,14 @@ class AuthRemoteDataSource @Inject constructor(
 
     }
 
+    suspend fun getSystemUsers(
+        token: String
+    ) : List<User>{
+        val response = httpClient.get("${baseUrl}users") {
+            bearerAuth(token)
+            contentType(ContentType.Application.Json)
+        }
+        return response.body()
+    }
+
 }

@@ -67,4 +67,13 @@ class AuthRepositoryImpl @Inject constructor(
             Result.failure(e)
         }
     }
+
+    override suspend fun getSystemUsers(token: String): Result<List<User>> {
+        return try {
+            val response = remoteDataSource.getSystemUsers( token)
+            Result.success(response)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
 }

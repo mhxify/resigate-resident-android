@@ -2,6 +2,7 @@ package com.secure.resident.main.data.local
 
 import android.content.Context
 import android.content.SharedPreferences
+import android.net.Uri
 import androidx.core.content.edit
 import com.secure.resident.main.domain.model.group.GroupMessage
 
@@ -49,4 +50,27 @@ object ChatPrefs {
         )
     }
 
+
+    private const val KEY_GROUP_NAME_KEY = "group_name_key"
+    private const val KEY_IMAGE_URI = "group_image_uri"
+
+    fun setGroupCreateInfo(
+        groupName: String,
+        imageUri: Uri,
+        context: Context
+    ) {
+        prefs(context).edit {
+            putString(KEY_GROUP_NAME_KEY, groupName)
+            putString(KEY_IMAGE_URI, imageUri.toString())
+        }
+    }
+
+    fun getGroupImageUri(context: Context): Uri? {
+        val uriString = prefs(context).getString(KEY_IMAGE_URI, null)
+        return uriString?.let { Uri.parse(it) }
+    }
+
+    fun getGroupName(context: Context): String? {
+        return prefs(context).getString(KEY_GROUP_NAME_KEY, null)
+    }
 }

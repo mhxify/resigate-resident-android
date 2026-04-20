@@ -1,5 +1,7 @@
 package com.secure.resident.main.data.repository
 
+import com.secure.resident.main.data.model.createGroup.CreateGroupMessageRequest
+import com.secure.resident.main.data.model.createGroup.CreateGroupMessageResponse
 import com.secure.resident.main.data.model.message.LiveMessageResponse
 import com.secure.resident.main.data.model.message.SendMessageRequest
 import com.secure.resident.main.data.remote.MainRemoteDataSource
@@ -68,6 +70,21 @@ class MainRepositoryImpl @Inject constructor(
             val response = mainRemoteDataSource.getUserPost(
                 token = token ,
                 userId = userId
+            )
+            Result.success(response)
+        } catch (e: Exception) {
+            Result.failure(e)
+        }
+    }
+
+    override suspend fun createGroupMessage(
+        token: String,
+        request: CreateGroupMessageRequest
+    ): Result<CreateGroupMessageResponse> {
+        return try {
+            val response = mainRemoteDataSource.createGroupMessage(
+                token = token ,
+                request = request
             )
             Result.success(response)
         } catch (e: Exception) {

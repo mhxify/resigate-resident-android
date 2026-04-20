@@ -6,40 +6,42 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.verticalScroll
-import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil3.compose.AsyncImage
 import com.secure.resident.auth.data.local.AuthPrefs
 import com.secure.resident.core.data.remote.baseUrl
+import com.secure.resident.core.presentation.component.AppButton
 import com.secure.resident.core.presentation.component.CircularIndicator
+import com.secure.resident.core.presentation.component.MainOutlinedTextField
 import com.secure.resident.core.presentation.component.PrimaryText
 import com.secure.resident.core.presentation.state.ResultState
 import com.secure.resident.main.data.local.ChatPrefs
 import com.secure.resident.main.navigation.MainAction
+import com.secure.resident.main.navigation.MainRoute
 import com.secure.resident.main.presentation.viewmodel.chat.getUserGroup.GetUserGroupViewModel
 
 @Composable
@@ -51,6 +53,7 @@ fun ChatScreen(
     val context = LocalContext.current
     val userId = remember { AuthPrefs.getUser(context).userId }
     val token = remember { AuthPrefs.getToken(context) }
+    var query by remember { mutableStateOf("") }
     val userGroupState by getUserGroupViewModel.getGroupsState.collectAsState()
 
     LaunchedEffect(userId, token) {
@@ -79,18 +82,42 @@ fun ChatScreen(
                 modifier = Modifier.fillMaxSize()
             ) {
 
+                AppButton(
+                    title = "Create New Chat" ,
+                    onClick = {
+                        navController.navigate(MainRoute.CREATE_GROUP_INFO)
+                    }
+                )
+
+                MainOutlinedTextField(
+                    singleLine = true,
+                    imeAction = ImeAction.Done,
+                    placeholder = "Search for a member",
+                    value = query,
+                    onValueChange = {
+                        query = it
+                    }
+                )
+
+
+
                 PrimaryText(
                     "Messages" ,
                     needBold = true
                 )
 
                 if (state.data.isNotEmpty()) {
+
+
+
                     LazyColumn(
                         modifier = Modifier.weight(1f),
                         verticalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
                         items(
-                            items = state.data,
+                            items = state.data.filter { groupMessage ->
+                                groupMessage.groupName?.contains(query , ignoreCase = true) ?:false
+                            },
                             key = { group -> group.groupId?:"" }
                         ) { group ->
                             val fullImageUrl =

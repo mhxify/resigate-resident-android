@@ -9,5 +9,5 @@ object DrawerRoute {
 
     const val RESERVE_FACILITIES = "reserve_facilities_screen"
 
-    const val REQUEST_GUEST = "request_guest_screen"
+    const val REQUEST_GUEST_STATUS = "request_guest_status_screen"
 }

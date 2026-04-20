@@ -20,6 +20,6 @@ object DrawerAction {
     }
 
     fun navigationToRequestGuest(navController: NavController) {
-        navController.navigate(DrawerRoute.REQUEST_GUEST)
+        navController.navigate(DrawerRoute.REQUEST_GUEST_STATUS)
     }
 }

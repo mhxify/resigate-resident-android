@@ -4,6 +4,7 @@ import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
+import com.secure.resident.drawer.incidents.presentation.view.CreateIncidentScreen
 import com.secure.resident.drawer.incidents.presentation.view.IncidentScreen
 import com.secure.resident.drawer.navigation.DrawerRoute
 
@@ -14,6 +15,10 @@ fun NavGraphBuilder.incidentGraph(navController: NavController) {
     ) {
         composable(IncidentRoute.INCIDENT) {
             IncidentScreen(navController)
+        }
+
+        composable(IncidentRoute.CREATE_INCIDENT) {
+            CreateIncidentScreen(navController)
         }
     }
 }

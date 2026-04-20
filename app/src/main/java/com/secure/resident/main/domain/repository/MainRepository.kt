@@ -1,5 +1,7 @@
 package com.secure.resident.main.domain.repository
 
+import com.secure.resident.main.data.model.createGroup.CreateGroupMessageRequest
+import com.secure.resident.main.data.model.createGroup.CreateGroupMessageResponse
 import com.secure.resident.main.data.model.message.LiveMessageResponse
 import com.secure.resident.main.data.model.message.SendMessageRequest
 import com.secure.resident.main.domain.model.group.GroupMessage
@@ -17,5 +19,5 @@ interface MainRepository {
 
     suspend fun getAllPost( token: String ) : Result<List<Post>>
 
-
+    suspend fun createGroupMessage(token: String , request : CreateGroupMessageRequest) : Result<CreateGroupMessageResponse>
 }

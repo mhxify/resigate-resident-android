@@ -3,6 +3,7 @@ package com.secure.resident.auth.domain.repository
 import com.secure.resident.auth.data.model.login.response.LoginDtoResponse
 import com.secure.resident.auth.data.model.updatefcm.UpdateFcm
 import com.secure.resident.auth.domain.model.User
+import com.secure.resident.core.presentation.state.ResultState
 
 interface AuthRepository {
 
@@ -33,4 +34,8 @@ interface AuthRepository {
         request : UpdateFcm ,
         token : String
     ) : Result<Unit>
+
+    suspend fun getSystemUsers(
+        token : String
+    ) : Result<List<User>>
 }

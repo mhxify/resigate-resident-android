@@ -1,4 +1,4 @@
-package com.secure.resident.reserveFacility.presentation.view.component
+package com.secure.resident.core.presentation.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,7 +28,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
-import com.secure.resident.core.presentation.component.PrimaryText
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale

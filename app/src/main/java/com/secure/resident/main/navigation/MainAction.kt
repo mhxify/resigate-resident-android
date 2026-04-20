@@ -20,4 +20,12 @@ object MainAction {
         navController.navigate(MainRoute.SEND_REPORT)
     }
 
+    fun navigationToCreatePost(navController: NavController) {
+        navController.navigate(MainRoute.CREATE_POST)
+    }
+
+    fun navigationToRequestGuest(navController: NavController) {
+        navController.navigate(MainRoute.REQUEST_GUEST)
+    }
+
 }

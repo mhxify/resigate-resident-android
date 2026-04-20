@@ -31,9 +31,9 @@ import com.secure.resident.core.presentation.state.ResultState
 import com.secure.resident.reserveFacility.data.local.ReserveFacilityPrefs
 import com.secure.resident.reserveFacility.data.model.ReserveFacilityRequest
 import com.secure.resident.reserveFacility.navigation.ReserveFacilitiesAction
-import com.secure.resident.reserveFacility.presentation.view.component.DataBoxView
-import com.secure.resident.reserveFacility.presentation.view.component.DatePickerView
-import com.secure.resident.reserveFacility.presentation.view.component.TimePickerView
+import com.secure.resident.core.presentation.component.DataBoxView
+import com.secure.resident.core.presentation.component.DatePickerView
+import com.secure.resident.core.presentation.component.TimePickerView
 import com.secure.resident.reserveFacility.presentation.viewmodel.postreservation.PostReservationFacilitiesViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)

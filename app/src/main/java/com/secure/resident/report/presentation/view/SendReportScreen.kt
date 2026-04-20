@@ -7,6 +7,7 @@ import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -20,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import androidx.navigation.NavController
@@ -28,6 +30,7 @@ import com.secure.resident.core.presentation.component.AppButton
 import com.secure.resident.core.presentation.component.BackTopBar
 import com.secure.resident.core.presentation.component.ImagePickerView
 import com.secure.resident.core.presentation.component.MainOutlinedTextField
+import com.secure.resident.core.presentation.component.PrimaryText
 import com.secure.resident.core.presentation.helper.toByteArray
 import com.secure.resident.core.presentation.state.ResultState
 import com.secure.resident.report.data.model.SendReportRequest
@@ -102,6 +105,13 @@ fun SendReportScreen(
                         )
                     )
                 }
+            )
+
+            PrimaryText(
+                "Report Description" ,
+                textAlign = TextAlign.Start ,
+                modifier = Modifier
+                    .fillMaxWidth()
             )
 
 

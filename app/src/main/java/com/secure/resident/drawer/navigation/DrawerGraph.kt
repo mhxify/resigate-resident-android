@@ -8,7 +8,7 @@ import com.secure.resident.drawer.about.AboutUsScreen
 import com.secure.resident.drawer.facilities.presentation.view.FacilitiesScreen
 import com.secure.resident.drawer.incidents.navigation.incidentGraph
 import com.secure.resident.drawer.reports.navigation.reportsGraph
-import com.secure.resident.drawer.requestguest.presentation.view.RequestGuestScreen
+import com.secure.resident.drawer.requestguest.presentation.view.RequestGuestStatusScreen
 import com.secure.resident.main.navigation.MainRoute
 
 fun NavGraphBuilder.drawerGraph(navController: NavController) {
@@ -29,8 +29,8 @@ fun NavGraphBuilder.drawerGraph(navController: NavController) {
             FacilitiesScreen(navController)
         }
 
-        composable(DrawerRoute.REQUEST_GUEST) {
-            RequestGuestScreen(navController)
+        composable(DrawerRoute.REQUEST_GUEST_STATUS) {
+            RequestGuestStatusScreen(navController)
         }
     }
 }

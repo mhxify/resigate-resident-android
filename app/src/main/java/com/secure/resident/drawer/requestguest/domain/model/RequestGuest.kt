@@ -10,5 +10,7 @@ data class RequestGuest(
     val requestId: String,
     val requestStatus: String,
     val startTime: String,
-    val userId: String
+    val userId: String ,
+    val guestDate : String ,
+    val guestFullName : String
 )

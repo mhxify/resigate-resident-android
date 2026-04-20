@@ -26,6 +26,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.secure.resident.core.presentation.helper.formatDate
 import com.secure.resident.core.presentation.helper.formatReservationDateTime
 
 @Composable
@@ -85,6 +86,12 @@ fun RequestGuestItem(
             Column(
                 verticalArrangement = Arrangement.spacedBy(12.dp)
             ) {
+
+                InfoBlock(
+                    label = "Guest Full Name",
+                    value = request.guestFullName
+                )
+
                 InfoBlock(
                     label = "Guest Email",
                     value = request.guestEmail
@@ -95,6 +102,13 @@ fun RequestGuestItem(
                     horizontalArrangement = Arrangement.spacedBy(12.dp),
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
+
+                    InfoSmallCard(
+                        title = "Date",
+                        value = formatDate(request.guestDate),
+                        modifier = Modifier.weight(1f, fill = true)
+                    )
+
                     InfoSmallCard(
                         title = "Start Time",
                         value = formatReservationDateTime(request.startTime),

@@ -20,6 +20,7 @@ import androidx.navigation.NavController
 import com.secure.resident.auth.data.local.AuthPrefs
 import com.secure.resident.auth.navigation.AuthRoute
 import com.secure.resident.core.presentation.component.NavBar
+import com.secure.resident.drawer.incidents.navigation.IncidentRoute
 import com.secure.resident.drawer.navigation.DrawerAction
 import com.secure.resident.main.navigation.MainAction
 import com.secure.resident.main.presentation.helper.AskNotificationPermission
@@ -161,6 +162,18 @@ fun MainView(
 
                     DialogRoute.SEND_REPORT -> {
                         MainAction.navigationToSendReport(navController)
+                    }
+
+                    DialogRoute.ADD_POST -> {
+                        MainAction.navigationToCreatePost(navController)
+                    }
+
+                    DialogRoute.REQUEST_GUEST -> {
+                        MainAction.navigationToRequestGuest(navController)
+                    }
+
+                    DialogRoute.INCIDENT -> {
+                        navController.navigate(IncidentRoute.CREATE_INCIDENT)
                     }
 
                 }

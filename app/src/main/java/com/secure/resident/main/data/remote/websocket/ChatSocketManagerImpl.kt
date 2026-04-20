@@ -40,10 +40,10 @@ class ChatSocketManagerImpl @Inject constructor() : ChatSocketManager {
         onErrorCallback = onError
 
         val request = Request.Builder()
-            .url("ws://10.0.2.2:8081/ws-chat")
+            .url("ws://schnapps-statue-shallot.ngrok-free.dev/ws-chat")
             .build()
 
-        Log.d("ChatSocket", "Connecting to ws://10.0.2.2:8081/ws-chat for group=$groupId")
+        Log.d("ChatSocket", "ws://schnapps-statue-shallot.ngrok-free.dev/ws-chat/ws-chat for group=$groupId")
 
         webSocket = client.newWebSocket(request, object : WebSocketListener() {
 
