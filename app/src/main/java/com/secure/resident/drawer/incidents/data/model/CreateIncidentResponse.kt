@@ -4,5 +4,5 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CreateIncidentResponse (
-    val incidentId : String ?=null
+    val incidentId : String
 )

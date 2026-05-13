@@ -68,8 +68,7 @@ fun CardScreen() {
             },
             back = {
                 BackCardView(
-                    userFullName = user.fullname ?: "",
-                    userRole = user.role ?: ""
+                    userId = user.userId
                 )
             }
         )
@@ -192,13 +191,12 @@ private fun FrontCardView(
 
 @Composable
 private fun BackCardView(
-    userFullName: String = "Mohamed Ali Benouarzeg",
-    userRole: String = "Resident"
+    userId: String ?
 ) {
     val primaryColor = MaterialTheme.colorScheme.primary.toArgb()
 
-    val qrContent = remember(userFullName, userRole) {
-        buildUserQrContent(userFullName, userRole)
+    val qrContent = remember(userId) {
+        buildUserQrContent(userId ?:"")
     }
 
     val qrBitmap = remember(qrContent, primaryColor) {
@@ -265,13 +263,7 @@ private fun BackCardView(
 }
 
 private fun buildUserQrContent(
-    userFullName: String,
-    userRole: String
+    userId: String
 ): String {
-    return """
-        {
-            "personFullName": "$userFullName",
-            "userRole": "$userRole"
-        }
-    """.trimIndent()
+    return "USER:$userId"
 }
